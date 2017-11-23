@@ -1,0 +1,12 @@
+minishell
+fdf
+a.out
+*.dSYM
+*.o
+*.exe
+*.a
+*~
+*#*#*
+*.#*
+*debug*
+*test*
