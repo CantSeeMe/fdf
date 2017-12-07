@@ -6,7 +6,7 @@
 /*   By: jye <jye@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 00:36:58 by jye               #+#    #+#             */
-/*   Updated: 2017/11/29 05:37:40 by jye              ###   ########.fr       */
+/*   Updated: 2017/12/07 03:47:01 by jye              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 #include <stdio.h>
 
-int		create_mlx_window(char *file)
+int		create_mlx_window(t_fdf *f, char *file)
 {
-	t_fdf	*f;
 	void	*mlx;
 	void	*mlx_win;
 
@@ -35,7 +34,6 @@ int		create_mlx_window(char *file)
 		dprintf(2, "%s: wtf MLX can't open window\n", PROGRAM_NAME);
 		return (1);
 	}
-	f = fdf_data();
 	f->mlx = mlx;
 	f->mlx_win = mlx_win;
 	return (0);

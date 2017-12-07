@@ -6,7 +6,7 @@
 /*   By: jye <jye@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 00:36:08 by jye               #+#    #+#             */
-/*   Updated: 2017/11/25 02:39:13 by jye              ###   ########.fr       */
+/*   Updated: 2017/12/07 03:50:07 by jye              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-int		sanity(t_lst *f)
+int		lst_sanity(t_lst *f)
 {
 	if (f == 0)
 		return (1);
@@ -43,7 +43,7 @@ char	*zombify(t_lst *f, size_t i)
 	size_t	last;
 	char	*file;
 
-	if (sanity(f))
+	if (lst_sanity(f))
 		return (NULL);
 	mallocfile = (i - 1) * 4095;
 	mallocfile += strlen((char *)f->data);
@@ -59,6 +59,21 @@ char	*zombify(t_lst *f, size_t i)
 		pop_lst__(&f, free);
 	}
 	return (file);
+}
+
+int		sanity(char *s)
+{
+	char	*ptr;
+
+	ptr = s;
+	s += *s == '-';
+	while (*s && !strchr(" \n\t", *s))
+	{
+		if (*s < 0x30 || *s > 0x39)
+			return (1);
+		s++;
+	}
+	return (ptr == s);
 }
 
 char	*map_getfile(int fd)
@@ -94,6 +109,11 @@ size_t	map_getxmax(char *file)
 			break ;
 		while (*file && strchr(ASCII_NUMBER, *file))
 			file++;
+		if (!strchr(" \t\n", *file))
+		{
+			no = 0;
+			break ;
+		}
 		no++;
 	}
 	return (no);
@@ -116,20 +136,6 @@ size_t	map_getymax(char *file)
 	return (no);
 }
 
-int		map_sanity(char *s)
-{
-	char	*ptr;
-
-	ptr = s;
-	while (*s && !strchr(" \n\t", *s))
-	{
-		if (*s < 0x30 || *s > 0x39)
-			return (1);
-		s++;
-	}
-	return (ptr == s);
-}
-
 char	*skip_string(char *s, char *string)
 {
 	while (*s && strchr(string, *s))
@@ -137,22 +143,20 @@ char	*skip_string(char *s, char *string)
 	return (s);
 }
 
-int		map_parsez(char *file, int *map)
+int		map_parsez(t_fdf *f, char *file, int *map)
 {
 	char	*ptr;
-	t_fdf	*f;
 	size_t	y;
 	size_t	x;
 
 	y = 0;
-	f = fdf_data();
 	while (y < f->ysize)
 	{
 		x = 0;
 		while (x < f->xsize)
 		{
 			file = skip_string(file, " \t");
-			if (map_sanity(file))
+			if (sanity(file))
 				return (1);
 			MAP_PTR(map, x++, y, f->xsize) = atoi(file);
 			while (*file && strchr(ASCII_NUMBER, *file))
@@ -166,25 +170,23 @@ int		map_parsez(char *file, int *map)
 	return (0);
 }
 
-int		map_parsefile(char *file)
+int		map_parsefile(t_fdf *f, char *file)
 {
-	t_fdf	*f;
 	int		*map;
 
-	f = fdf_data();
 	f->xsize = map_getxmax(file);
 	f->ysize = map_getymax(file);
 	if (f->xsize == 0 || f->ysize == 0)
 		return (1);
 	if ((map = (int *)malloc(sizeof(*map) * (f->ysize * f->xsize))) == 0)
 		return (1);
-	if (map_parsez(file, map))
+	if (map_parsez(f, file, map))
 		return (1);
 	f->map = map;
 	return (0);
 }
 
-int		map_open(char *file)
+int		map_open(t_fdf *f, char *file)
 {
 	int		fd;
 	char	*filebuf;
@@ -200,7 +202,7 @@ int		map_open(char *file)
 		dprintf(2, "%s: NOOOO how did this happen...\n", PROGRAM_NAME);
 		return (1);
 	}
-	if (map_parsefile(filebuf))
+	if (map_parsefile(f, filebuf))
 	{
 		dprintf(2, "%s: No, no and no. Now fuck off\n", PROGRAM_NAME);
 		return (1);
