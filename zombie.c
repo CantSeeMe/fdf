@@ -6,7 +6,7 @@
 /*   By: jye <jye@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 00:36:08 by jye               #+#    #+#             */
-/*   Updated: 2017/12/07 03:50:07 by jye              ###   ########.fr       */
+/*   Updated: 2017/12/08 01:10:59 by jye              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,11 +177,15 @@ int		map_parsefile(t_fdf *f, char *file)
 	f->xsize = map_getxmax(file);
 	f->ysize = map_getymax(file);
 	if (f->xsize == 0 || f->ysize == 0)
+	{
 		return (1);
+	}
 	if ((map = (int *)malloc(sizeof(*map) * (f->ysize * f->xsize))) == 0)
 		return (1);
 	if (map_parsez(f, file, map))
+	{
 		return (1);
+	}
 	f->map = map;
 	return (0);
 }
@@ -211,4 +215,3 @@ int		map_open(t_fdf *f, char *file)
 	close(fd);
 	return (0);
 }
-
