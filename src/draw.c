@@ -6,7 +6,7 @@
 /*   By: jye <jye@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 07:25:24 by jye               #+#    #+#             */
-/*   Updated: 2017/12/09 19:46:31 by jye              ###   ########.fr       */
+/*   Updated: 2017/12/11 23:59:11 by jye              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	draw_mlx_line(t_fdf *f, int x[4], int (*c)(), t_cstep *z)
 	err[1] = 0;
 	while (x[0] != x[1] || x[2] != x[3])
 	{
-		draw_mlx_pixel(f, x[0], x[2], c ? c(z, f->cstep, f->dist) : NORMCO);
+		draw_mlx_pixel(f, x[0], x[2], c ? c(&f->v, z, f->cstep, f->dist) : NO);
 		err[1] = err[0];
 		if (err[1] > -d[0])
 		{

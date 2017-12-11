@@ -6,13 +6,12 @@
 /*   By: jye <jye@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 00:36:02 by jye               #+#    #+#             */
-/*   Updated: 2017/12/07 03:11:30 by jye              ###   ########.fr       */
+/*   Updated: 2017/12/12 00:36:59 by jye              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
-#include <string.h>
 
 void	quat_mul(const t_quat *q1, const t_quat *q2, t_quat *qrot)
 {
