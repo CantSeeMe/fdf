@@ -6,7 +6,7 @@
 /*   By: jye <jye@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 23:22:56 by jye               #+#    #+#             */
-/*   Updated: 2017/12/12 00:36:30 by jye              ###   ########.fr       */
+/*   Updated: 2017/12/12 02:12:00 by jye              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ int		key(int keycode, void *param)
 		transpose((t_fdf *)param, FDF_POSY, FDF_POS_DEC);
 	else if (keycode == MLX_ARROW_DOWN)
 		transpose((t_fdf *)param, FDF_POSY, FDF_POS_INC);
+	else if (keycode == MLX_KEY_ESC)
+		exit(0);
 	else
 		transform((t_fdf *)param, keycode);
 	mlx_clear_window(((t_fdf *)param)->mlx, ((t_fdf *)param)->mlx_win);

@@ -6,7 +6,7 @@
 /*   By: jye <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 00:00:00 by jye               #+#    #+#             */
-/*   Updated: 2017/12/02 02:26:03 by jye              ###   ########.fr       */
+/*   Updated: 2017/12/12 01:22:10 by jye              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static char	*maybe(uint64_t *long_ptr)
 
 size_t		ft_strlen(const char *str)
 {
-	uint64_t	*long_ptr;
-	uint64_t	val;
+	uint64_t		*long_ptr;
+	uint64_t		val;
 	const char		*cp;
 
 	cp = str;

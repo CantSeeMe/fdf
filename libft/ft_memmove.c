@@ -6,7 +6,7 @@
 /*   By: jye <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 15:49:06 by jye               #+#    #+#             */
-/*   Updated: 2017/11/30 08:29:13 by root             ###   ########.fr       */
+/*   Updated: 2017/12/12 01:23:07 by jye              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static void	ft_memcpy_bwd(uint64_t dstp, uint64_t srcp, size_t n)
 	ft_byte_copy_bwd(dstp, srcp, n);
 }
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
+void		*ft_memmove(void *dst, const void *src, size_t n)
 {
 	uint64_t	dstp;
 	uint64_t	srcp;
