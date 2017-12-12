@@ -6,14 +6,13 @@
 /*   By: jye <jye@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 00:36:58 by jye               #+#    #+#             */
-/*   Updated: 2017/12/12 00:37:15 by jye              ###   ########.fr       */
+/*   Updated: 2017/12/12 01:16:01 by jye              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx.h"
 #include "ft_printf.h"
-
 
 int		create_mlx_window(t_fdf *f, char *file)
 {
