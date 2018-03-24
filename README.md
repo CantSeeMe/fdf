@@ -15,12 +15,12 @@ The maps should look like a grid of integer with each as their height.
 
 EXTRA
 
-U rotate inverse x
-J rotate x
-I rotate inverse y
-K rotate y
-O rotate inverse z
-L roate z
+U rotate inverse x                                                                                                                 
+J rotate x                                                                                                                                                                                                  
+I rotate inverse y                                                                                        
+K rotate y                                                                                                                                                                                                                                                                                                                              
+O rotate inverse z                                                                                                                                                                                                                                                                         
+L roate z                                                                                                                                                                                                                                                                         
 
 arrows key moves the map up left bottom right
 
