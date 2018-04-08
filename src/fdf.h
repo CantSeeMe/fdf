@@ -6,7 +6,7 @@
 /*   By: jye <jye@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 19:13:18 by jye               #+#    #+#             */
-/*   Updated: 2018/04/08 07:24:20 by jye              ###   ########.fr       */
+/*   Updated: 2018/04/08 07:28:34 by jye              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@
 
 typedef struct	s_rgb
 {
-	unsigned char	pad;
-	unsigned char	r;
-	unsigned char	g;
 	unsigned char	b;
+	unsigned char	g;
+	unsigned char	r;
+	unsigned char	pad;
 }				t_rgb;
 
 typedef struct	s_cstep
