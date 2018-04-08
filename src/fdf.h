@@ -6,7 +6,7 @@
 /*   By: jye <jye@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 19:13:18 by jye               #+#    #+#             */
-/*   Updated: 2017/12/12 00:24:18 by jye              ###   ########.fr       */
+/*   Updated: 2018/04/08 07:24:20 by jye              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,13 @@
 # define FDF_POS_INC	10
 # define FDF_POS_DEC	-10
 
-# if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
-
-#  include "fucknorm1.h"
-
-# else
-
-#  include "fucknorm2.h"
-
-# endif
+typedef struct	s_rgb
+{
+	unsigned char	pad;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+}				t_rgb;
 
 typedef struct	s_cstep
 {
